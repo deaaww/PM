@@ -20,16 +20,22 @@ void main() {
       stdout.write('Masukkan jumlah porsi: ');
       int? jumlah = int.tryParse(stdin.readLineSync() ?? '0');
 
-      int total = (jumlah ?? 0) * hargaPerPorsi;
-      stok -= (jumlah ?? 0);
+      if (jumlah == null || jumlah <= 0) {
+        print('Input tidak valid! Masukkan angka lebih dari 0.');
+      } else if (jumlah > stok) {
+        print('Maaf, stok tidak cukup! Tersisa $stok porsi.');
+      } else {
+        int total = jumlah * hargaPerPorsi;
+        stok -= jumlah;
 
-      print('\n-----------------------------------');
-      print('|         NOTA PEMBAYARAN         |');
-      print('-----------------------------------');
-      print('Pesanan  : $jumlah porsi');
-      print('Total    : Rp $total');
-      print('Sisa Stok: $stok');
-      print('-----------------------------------');
+        print('\n-----------------------------------');
+        print('|         NOTA PEMBAYARAN         |');
+        print('-----------------------------------');
+        print('Pesanan  : $jumlah porsi');
+        print('Total    : Rp $total');
+        print('Sisa Stok: $stok');
+        print('-----------------------------------');
+      }
     } else if (input == '2') {
       print('Terima kasih!');
       print('-----------------------------------');
