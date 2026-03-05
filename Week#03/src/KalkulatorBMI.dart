@@ -14,6 +14,12 @@ void main(){
 
 void hitungBMI(double tinggiCm, double beratKg, List<Map<String, dynamic>> riwayat) {
   
+  // Validasi input
+  if (tinggiCm <= 0 || beratKg <= 0) {
+    print("Error: Tinggi Badan atau Berat Badang harus lebih dari 0!");
+    return;
+  }
+  
   // Konversi tinggi dari cm ke m
   double tinggiM = tinggiCm / 100;
   
