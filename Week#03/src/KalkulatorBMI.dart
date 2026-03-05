@@ -3,7 +3,7 @@ void main(){
   List<Map<String, dynamic>> riwayat = [];
   
   // Simulasi beberapa input
-  print("Perhitungan BMI")
+  print("\nPerhitungan BMI");
   hitungBMI(170, 65, riwayat);
   hitungBMI(165, 75, riwayat);
   hitungBMI(180, 85, riwayat);
@@ -19,7 +19,7 @@ void hitungBMI(double tinggiCm, double beratKg, List<Map<String, dynamic>> riway
     print("Error: Tinggi Badan atau Berat Badang harus lebih dari 0!");
     return;
   }
-  
+
   // Konversi tinggi dari cm ke m
   double tinggiM = tinggiCm / 100;
   
@@ -47,4 +47,18 @@ void hitungBMI(double tinggiCm, double beratKg, List<Map<String, dynamic>> riway
   });
 
   print("Data berhasil ditambahkan: $tinggiCm cm, $beratKg kg -> $kategori");
+}
+
+void tampilkanRiwayat(List<Map<String, dynamic>> riwayat) {
+  print("\nRiwayat Perhitungan BMI");
+
+  if (riwayat.isEmpty) {
+    print("Belum ada riwayat.");
+    return;
+  }
+
+  for (var i = 0; i < riwayat.length; i++) {
+    var data = riwayat[i];
+    print("${i + 1}. Tinggi: ${data['tinggi']}cm | Berat: ${data['berat']}kg | BMI: ${data['bmi']} | kategori: ${data['kategori']}");
+  }
 }
