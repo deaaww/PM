@@ -1,8 +1,9 @@
 // main.dart
 void main(){
-  List> riwayat = [];
+  List<Map<String, dynamic>> riwayat = [];
   
   // Simulasi beberapa input
+  print("Perhitungan BMI")
   hitungBMI(170, 65, riwayat);
   hitungBMI(165, 75, riwayat);
   hitungBMI(180, 85, riwayat);
@@ -11,7 +12,7 @@ void main(){
   tampilkanRiwayat(riwayat);
 }
 
-void hitungBMI(double tinggiCm, double beratKg, List> riwayat) {
+void hitungBMI(double tinggiCm, double beratKg, List<Map<String, dynamic>> riwayat) {
   
   // Konversi tinggi dari cm ke m
   double tinggiM = tinggiCm / 100;
@@ -35,7 +36,9 @@ void hitungBMI(double tinggiCm, double beratKg, List> riwayat) {
   riwayat.add({
     'tinggi': tinggiCm,
     'berat': beratKg,
-    'bmi': bmi,
+    'bmi': bmi.toStringAsFixed(2),
     'kategori': kategori
   });
+
+  print("Data berhasil ditambahkan: $tinggiCm cm, $beratKg kg -> $kategori");
 }
