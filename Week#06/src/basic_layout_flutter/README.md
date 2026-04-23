@@ -631,3 +631,53 @@ Menampilkan 4 foto yang disusun menjadi 2 baris dan 2 kolom. Method `_buildImage
 Menampilkan 30 gambar dalam bentuk susunan grid yang bisa discroll ke atas dan ke bawah. Kode ini secara otomatis mencetak dan memanggil gambar dari file `pic1.jpg` hingga `pic30.jpg` secara berurutan, lalu membatasinya agar lebar setiap foto maksimal **150 px** sehingga pada ukuran layar HP kamu susunannya otomatis pas menjadi 3 kolom. Selain itu, ditambahkan juga jarak spasi sebesar **4 px** di setiap sisi gambar agar tampilannya rapi dan tidak saling berdempetan.
 
 ---
+
+### ListView
+---
+```
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: _buildList(),
+      ),
+    );
+  }
+
+  Widget _buildList() {
+    return ListView(
+      children: [
+        _tile('CineArts at the Empire', '85 W Portal Ave', Icons.theaters),
+        _tile('The Castro Theater', '429 Castro St', Icons.theaters),
+        _tile('Alamo Drafthouse Cinema', '2550 Mission St', Icons.theaters),
+        _tile('Roxie Theater', '3117 16th St', Icons.theaters),
+        _tile(
+          'United Artists Stonestown Twin',
+          '501 Buckingham Way',
+          Icons.theaters,
+        ),
+        _tile('AMC Metreon 16', '135 4th St #3000', Icons.theaters),
+        const Divider(),
+        _tile('K\'s Kitchen', '757 Monterey Blvd', Icons.restaurant),
+        _tile('Emmy\'s Restaurant', '1923 Ocean Ave', Icons.restaurant),
+        _tile('Chaiya Thai Restaurant', '272 Claremont Blvd', Icons.restaurant),
+        _tile('La Ciccia', '291 30th St', Icons.restaurant),
+      ],
+    );
+  }
+
+  ListTile _tile(String title, String subtitle, IconData icon) {
+    return ListTile(
+      title: Text(
+        title,
+        style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+      ),
+      subtitle: Text(subtitle),
+      leading: Icon(icon, color: Colors.blue[500]),
+    );
+  }
+```
+![](images/list.png)
+
+Menampilkan daftar vertikal yang bisa discroll ke atas dan ke bawah, berisi informasi nama-nama bioskop dan restoran. Setiap baris pada daftar tersebut dibangun menggunakan komponen `ListTile` yang menampilkan sebuah ikon berwarna biru di sisi kiri, judul tempat dengan huruf yang lebih besar dan tebal, serta alamat tempat sebagai sub-judul di bawahnya. Selain itu, ditambahkan juga sebuah garis tipis melintang (`Divider`) di tengah-tengah daftar yang berfungsi untuk memisahkan kelompok bioskop dengan kelompok restoran agar tampilannya lebih rapi dan terorganisir.
+
+---
