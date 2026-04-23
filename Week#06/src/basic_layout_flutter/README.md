@@ -180,3 +180,75 @@ Pada tampilan di atas, gambar tengah diberikan nilai **flex: 2**, sementara gamb
 Pada tampilan di atas, kelima ikon bintang berkumpul di pojok kiri atas dan tidak tersebar memenuhi lebar layar. Hal ini disebabkan oleh penggunaan properti `mainAxisSize: MainAxisSize.min` pada widget `Row`. Secara default, `Row` akan mencoba mengambil ruang horizontal sebesar mungkin (`max`). Namun, dengan mengatur nilainya ke `min`, `Row` dipaksa untuk menyusut dan hanya mengambil ruang selebar total akumulasi ikon bintang.
 
 ---
+
+### Nesting rows and columns
+---
+#### Ratings
+```
+    const titleText = Text(
+      'Strawberry Pavlova',
+      style: TextStyle(
+        fontWeight: FontWeight.w800,
+        letterSpacing: 0.5,
+        fontSize: 30,
+      ),
+    );
+
+    const subTitle = Text(
+      'Pavlova is a meringue-based dessert named after the Russian ballerina '
+      'Anna Pavlova. It features a crisp crust and soft, light inside.',
+      textAlign: TextAlign.center,
+      style: TextStyle(fontFamily: 'Georgia', fontSize: 18),
+    );
+
+    final stars = Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.star, color: Colors.green[500]),
+        Icon(Icons.star, color: Colors.green[500]),
+        Icon(Icons.star, color: Colors.green[500]),
+        const Icon(Icons.star, color: Colors.black),
+        const Icon(Icons.star, color: Colors.black),
+      ],
+    );
+
+    final ratings = Container(
+      padding: const EdgeInsets.all(20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          stars,
+          const Text(
+            '170 Reviews',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w800,
+              fontFamily: 'Roboto',
+              letterSpacing: 0.5,
+              fontSize: 20,
+            ),
+          ),
+        ],
+      ),
+    );
+
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Column(
+                mainAxisSize: MainAxisSize.min, // Agar Column hanya setinggi isinya
+                children: [
+                  titleText,
+                  subTitle,
+                  ratings,
+                ],
+              ),
+          ),
+        ),
+    );
+```
+![](images/ratings.png)
+
+Menampilkan visual rating **3 dari 5 bintang** yang disandingkan secara horizontal dengan teks ulasan.
+
+---
