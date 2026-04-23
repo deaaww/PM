@@ -597,3 +597,37 @@ Menampilkan tata letak horizontal yang membagi layar menjadi dua bagian utama, y
 Menampilkan 4 foto yang disusun menjadi 2 baris dan 2 kolom. Method `_buildImageColumn` membuat area background utama berwarna abu-abu muda dan menyusun dua baris foto dari atas ke bawah, method `_buildImageRow` menyusun dua foto agar berjejer kiri dan kanan dalam satu barisnya, dan method `_buildDecoratedImage` menghias tiap foto dengan bingkai tebal berwarna abu-abu gelap, membuat sudut bingkainya melengkung, dan memberi jarak antar tepi agar foto tidak saling menempel.
 
 ---
+
+### GridView
+---
+```
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: _buildGrid(),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGrid() => GridView.extent(
+    maxCrossAxisExtent: 150,
+    padding: const EdgeInsets.all(4),
+    mainAxisSpacing: 4,
+    crossAxisSpacing: 4,
+    children: _buildGridTileList(30),
+  );
+
+  // The images are saved with names pic0.jpg, pic1.jpg...pic29.jpg.
+  // The List.generate() constructor allows an easy way to create
+  // a list when objects have a predictable naming pattern.
+  List<Widget> _buildGridTileList(int count) =>
+      List.generate(count, (i) => Image.asset('images/pic${i + 1}.jpg'));
+```
+![](images/grid1.png)
+![](images/grid2.png)
+
+Menampilkan 30 gambar dalam bentuk susunan grid yang bisa discroll ke atas dan ke bawah. Kode ini secara otomatis mencetak dan memanggil gambar dari file `pic1.jpg` hingga `pic30.jpg` secara berurutan, lalu membatasinya agar lebar setiap foto maksimal **150 px** sehingga pada ukuran layar HP kamu susunannya otomatis pas menjadi 3 kolom. Selain itu, ditambahkan juga jarak spasi sebesar **4 px** di setiap sisi gambar agar tampilannya rapi dan tidak saling berdempetan.
+
+---

@@ -12,34 +12,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: _buildImageColumn(),
+          child: _buildGrid(),
         ),
       ),
     );
   }
 
-  Widget _buildImageColumn() {
-    return Container(
-      decoration: const BoxDecoration(color: Colors.black26),
-      child: Column(children: [_buildImageRow(1), _buildImageRow(3)]),
-    );
-  }
-
-  Widget _buildDecoratedImage(int imageIndex) => Expanded(
-    child: Container(
-      decoration: BoxDecoration(
-        border: Border.all(width: 10, color: Colors.black38),
-        borderRadius: const BorderRadius.all(Radius.circular(8)),
-      ),
-      margin: const EdgeInsets.all(4),
-      child: Image.asset('images/pic$imageIndex.jpg'),
-    ),
+  Widget _buildGrid() => GridView.extent(
+    maxCrossAxisExtent: 150,
+    padding: const EdgeInsets.all(4),
+    mainAxisSpacing: 4,
+    crossAxisSpacing: 4,
+    children: _buildGridTileList(30),
   );
 
-  Widget _buildImageRow(int imageIndex) => Row(
-    children: [
-      _buildDecoratedImage(imageIndex),
-      _buildDecoratedImage(imageIndex + 1),
-    ],
-  );
+  // The images are saved with names pic0.jpg, pic1.jpg...pic29.jpg.
+  // The List.generate() constructor allows an easy way to create
+  // a list when objects have a predictable naming pattern.
+  List<Widget> _buildGridTileList(int count) =>
+      List.generate(count, (i) => Image.asset('images/pic${i + 1}.jpg'));
 }
