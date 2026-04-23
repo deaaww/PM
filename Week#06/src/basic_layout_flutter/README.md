@@ -774,3 +774,62 @@ Menampilkan sebuah gambar profil berbentuk lingkaran besar di tengah layar, yang
 Menampilkan sebuah card dengan sudut melengkung dan sedikit efek bayangan yang melayang di tengah layar. Card yang dibatasi tingginya maksimal `210 px` ini berisi susunan informasi kontak dari atas ke bawah, diawali dengan teks alamat lokasi beserta ikon restoran, sebuah `Divider`, lalu dilanjutkan dengan teks nomor telepon dan alamat email yang masing-masing juga dilengkapi dengan ikon pendukung berwarna biru di sisi kirinya.
 
 ---
+
+### ListTile
+```
+// Copyright 2019 The Flutter team. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+import 'package:flutter/material.dart';
+
+class ListDemo extends StatelessWidget {
+  const ListDemo({super.key, required this.type});
+
+  final ListDemoType type;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: const Text('List demo'),
+        ),
+        body: Scrollbar(
+          child: ListView(
+            restorationId: 'list_demo_list_view',
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            children: [
+              for (var index = 1; index < 21; index++)
+                ListTile(
+                  leading: ExcludeSemantics(
+                    child: CircleAvatar(child: Text('$index')),
+                  ),
+                  title: Text('Item $index'),
+                  subtitle: type == ListDemoType.twoLine
+                      ? const Text('Secondary text')
+                      : null,
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+enum ListDemoType { oneLine, twoLine }
+
+void main() {
+  runApp(const ListDemo(type: ListDemoType.twoLine));
+}
+```
+![](images/list_tile.png)
+
+Menampilkan daftar berurutan dari angka 1 hingga 20 yang bisa discroll ke atas dan ke bawah, lengkap dengan bilah judul (`AppBar`) bertuliskan **List demo** di bagian atas layarnya. Setiap baris dalam daftar tersebut dibangun menggunakan komponen `ListTile` yang dicetak secara otomatis menggunakan perulangan, di mana masing-masing baris memuat sebuah lingkaran biru berisi nomor urut di sisi kiri, teks judul utama (**Item 1**, **Item 2**, dst.), serta teks tambahan (`Secondary text`) sebagai sub-judul tepat di bawahnya.
+
+---

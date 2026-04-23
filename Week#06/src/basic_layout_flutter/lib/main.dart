@@ -1,52 +1,50 @@
+// Copyright 2019 The Flutter team. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+class ListDemo extends StatelessWidget {
+  const ListDemo({super.key, required this.type});
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final ListDemoType type;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+      ),
       home: Scaffold(
-        body: Center(
-          child: _buildCard(),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: const Text('List demo'),
+        ),
+        body: Scrollbar(
+          child: ListView(
+            restorationId: 'list_demo_list_view',
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            children: [
+              for (var index = 1; index < 21; index++)
+                ListTile(
+                  leading: ExcludeSemantics(
+                    child: CircleAvatar(child: Text('$index')),
+                  ),
+                  title: Text('Item $index'),
+                  subtitle: type == ListDemoType.twoLine
+                      ? const Text('Secondary text')
+                      : null,
+                ),
+            ],
+          ),
         ),
       ),
     );
   }
+}
 
-  Widget _buildCard() {
-    return SizedBox(
-      height: 210,
-      child: Card(
-        child: Column(
-          children: [
-            ListTile(
-              title: const Text(
-                '1625 Main Street',
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
-              subtitle: const Text('My City, CA 99984'),
-              leading: Icon(Icons.restaurant_menu, color: Colors.blue[500]),
-            ),
-            const Divider(),
-            ListTile(
-              title: const Text(
-                '(408) 555-1212',
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
-              leading: Icon(Icons.contact_phone, color: Colors.blue[500]),
-            ),
-            ListTile(
-              title: const Text('costa@example.com'),
-              leading: Icon(Icons.contact_mail, color: Colors.blue[500]),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+enum ListDemoType { oneLine, twoLine }
+
+void main() {
+  runApp(const ListDemo(type: ListDemoType.twoLine));
 }
