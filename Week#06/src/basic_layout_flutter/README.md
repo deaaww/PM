@@ -125,3 +125,22 @@ Tampilan di atas mengalami **Right Overflow**, di mana hanya dua gambar yang mun
 Tampilan di atas mengalami **Bottom Overflow**, di mana hanya satu gambar yang muncul dengan sempurna, dengan satu gambar terpotong, dan satu gambar lainnya tidak muncul sama sekali. Hal ini terjadi karena widget `Column` merender gambar sesuai resolusi aslinya tanpa pembatasan tinggi.
 
 ---
+
+### Sizing widgets
+---
+#### Row
+```
+        body: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(child: Image.asset('images/pic1.jpg')),
+            Expanded(child: Image.asset('images/pic2.jpg')),
+            Expanded(child: Image.asset('images/pic3.jpg')),
+          ],
+        ),
+```
+![](images/row_sizing_widgets1.png)
+
+Pada tampilan di atas, setiap gambar dibungkus dengan widget `Expanded` tanpa mendefinisikan nilai `flex`. Secara default, setiap `Expanded` memiliki nilai **flex: 1**. Hal ini menyebabkan widget Row membagi lebar layar secara **sama rata dengan proporsional 1:1:1** kepada ketiga gambar tersebut. Hasilnya, ketiga gambar memiliki lebar yang identik satu sama lain.
+
+---

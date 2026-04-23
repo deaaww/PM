@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
       title: appTitle,
       home: Scaffold(
         appBar: AppBar(title: const Text(appTitle)),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        body: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset('images/pic1.jpg'),
-            Image.asset('images/pic2.jpg'),
-            Image.asset('images/pic3.jpg'),
+            Expanded(child: Image.asset('images/pic1.jpg')),
+            Expanded(child: Image.asset('images/pic2.jpg')),
+            Expanded(child: Image.asset('images/pic3.jpg')),
           ],
         ),
       ),
