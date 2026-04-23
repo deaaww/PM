@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(child: Image.asset('images/pic1.jpg')),
-            Expanded(child: Image.asset('images/pic2.jpg')),
+            Expanded(flex: 2, child: Image.asset('images/pic2.jpg')),
             Expanded(child: Image.asset('images/pic3.jpg')),
           ],
         ),

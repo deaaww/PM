@@ -144,3 +144,18 @@ Tampilan di atas mengalami **Bottom Overflow**, di mana hanya satu gambar yang m
 Pada tampilan di atas, setiap gambar dibungkus dengan widget `Expanded` tanpa mendefinisikan nilai `flex`. Secara default, setiap `Expanded` memiliki nilai **flex: 1**. Hal ini menyebabkan widget Row membagi lebar layar secara **sama rata dengan proporsional 1:1:1** kepada ketiga gambar tersebut. Hasilnya, ketiga gambar memiliki lebar yang identik satu sama lain.
 
 ---
+```
+        body: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(child: Image.asset('images/pic1.jpg')),
+            Expanded(flex: 2, child: Image.asset('images/pic2.jpg')),
+            Expanded(child: Image.asset('images/pic3.jpg')),
+          ],
+        ),
+```
+![](images/row_sizing_widgets2.png)
+
+Pada tampilan di atas, gambar tengah diberikan nilai **flex: 2**, sementara gambar lainnya tetap **flex: 1**. Hal ini menginstruksikan Flutter untuk memberikan ruang **dua kali lebih besar** kepada gambar kedua dibandingkan gambar kesatu dan ketiga. Total rasio lebar yang digunakan adalah 1:2:1, sehingga gambar tengah terlihat lebih dominan dan lebar di dalam baris tersebut.
+
+---
