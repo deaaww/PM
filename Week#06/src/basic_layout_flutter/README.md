@@ -87,3 +87,25 @@ class MyApp extends StatelessWidget {
 ```
 ---
 ![](images/cupertino_apps.png)
+---
+
+## Lay out multiple widgets vertically and horizontally
+
+### Aligning widgets
+---
+#### Row
+```
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Image.asset('images/pic1.jpg'),
+            Image.asset('images/pic2.jpg'),
+            Image.asset('images/pic3.jpg'),
+          ],
+        ),
+```
+![](images/row_aligning_widgets.png)
+
+Tampilan di atas mengalami **Right Overflow**, di mana hanya dua gambar yang muncul dengan sempurna, dan satu lainnya terpotong. Hal ini terjadi karena widget `Row` merender gambar sesuai resolusi aslinya tanpa pembatasan lebar.
+
+---
