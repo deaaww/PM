@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,13 +10,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String appTitle = 'Flutter layout demo';
-    return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
-        appBar: AppBar(title: const Text(appTitle)),
-        body: const Center(
-          child: Text('Hello World'),
+    return const CupertinoApp(
+      title: 'Flutter layout demo',
+      theme: CupertinoThemeData(
+        brightness: Brightness.light,
+        primaryColor: CupertinoColors.systemBlue,
+      ),
+      home: CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          backgroundColor: CupertinoColors.systemGrey,
+          middle: Text('Flutter layout demo'),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [Text('Hello World')],
+          ),
         ),
       ),
     );
