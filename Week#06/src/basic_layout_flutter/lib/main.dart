@@ -80,18 +80,17 @@ class MyApp extends StatelessWidget {
       ),
     );
 
+    final leftColumn = Container(
+      padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
+      child: Column(
+        children: [titleText, subTitle, ratings, iconList],
+      ),
+    );
+    
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Column(
-                mainAxisSize: MainAxisSize.min, // Agar Column hanya setinggi isinya
-                children: [
-                  titleText,
-                  subTitle,
-                  ratings,
-                  iconList,
-                ],
-              ),
+          child: leftColumn,
           ),
         ),
     );

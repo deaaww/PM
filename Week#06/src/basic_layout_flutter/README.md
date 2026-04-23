@@ -346,3 +346,97 @@ Menampilkan visual rating **3 dari 5 bintang** yang disandingkan secara horizont
 Menampilkan tiga kolom informasi yang sejajar secara horizontal, yaitu PREP selama 25 menit, COOK selama 1 jam dan FEEDS untuk 4-6 orang.
 
 ---
+
+#### LeftColumn
+```
+    const titleText = Text(
+      'Strawberry Pavlova',
+      style: TextStyle(
+        fontWeight: FontWeight.w800,
+        letterSpacing: 0.5,
+        fontSize: 30,
+      ),
+    );
+
+    const subTitle = Text(
+      'Pavlova is a meringue-based dessert named after the Russian ballerina '
+      'Anna Pavlova. It features a crisp crust and soft, light inside.',
+      textAlign: TextAlign.center,
+      style: TextStyle(fontFamily: 'Georgia', fontSize: 18),
+    );
+
+    final stars = Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.star, color: Colors.green[500]),
+        Icon(Icons.star, color: Colors.green[500]),
+        Icon(Icons.star, color: Colors.green[500]),
+        const Icon(Icons.star, color: Colors.black),
+        const Icon(Icons.star, color: Colors.black),
+      ],
+    );
+
+    final ratings = Container(
+      padding: const EdgeInsets.all(20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          stars,
+          const Text(
+            '170 Reviews',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w800,
+              fontFamily: 'Roboto',
+              letterSpacing: 0.5,
+              fontSize: 20,
+            ),
+          ),
+        ],
+      ),
+    );
+
+    const descTextStyle = TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.w800,
+      fontFamily: 'Roboto',
+      letterSpacing: 0.5,
+      fontSize: 18,
+      height: 2,
+    );
+
+    final iconList = DefaultTextStyle.merge(
+      style: descTextStyle,
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(children: [Icon(Icons.kitchen, color: Colors.green[500]), const Text('PREP:'), const Text('25 min')]),
+            Column(children: [Icon(Icons.timer, color: Colors.green[500]), const Text('COOK:'), const Text('1 hr')]),
+            Column(children: [Icon(Icons.restaurant, color: Colors.green[500]), const Text('FEEDS:'), const Text('4-6')]),
+          ],
+        ),
+      ),
+    );
+
+    final leftColumn = Container(
+      padding: const EdgeInsets.fromLTRB(20, 30, 20, 20),
+      child: Column(
+        children: [titleText, subTitle, ratings, iconList],
+      ),
+    );
+    
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: leftColumn,
+          ),
+        ),
+    );
+```
+![](images/leftColumn.png)
+
+Secara default, widget `Column` memiliki properti `mainAxisSize: MainAxisSize.max`. Karena `leftColumn` sekarang mengisi seluruh tinggi layar yang tersedia, kontennya secara otomatis dimulai dari **titik teratas** atau titik awal sumbu vertikal.
+
+---
