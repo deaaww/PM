@@ -87,12 +87,29 @@ class MyApp extends StatelessWidget {
       ),
     );
     
+    final mainImage = Image.asset(
+      'images/pavlova.jpg',
+      fit: BoxFit.cover,
+    );
+
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: leftColumn,
+          child: Container(
+            margin: const EdgeInsets.fromLTRB(0, 40, 0, 30),
+            height: 600,
+            child: Card(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(width: 440, child: leftColumn),
+                  mainImage,
+                ],
+              ),
+            ),
           ),
         ),
+      ),
     );
   }
 }
