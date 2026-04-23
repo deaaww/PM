@@ -681,3 +681,45 @@ Menampilkan 30 gambar dalam bentuk susunan grid yang bisa discroll ke atas dan k
 Menampilkan daftar vertikal yang bisa discroll ke atas dan ke bawah, berisi informasi nama-nama bioskop dan restoran. Setiap baris pada daftar tersebut dibangun menggunakan komponen `ListTile` yang menampilkan sebuah ikon berwarna biru di sisi kiri, judul tempat dengan huruf yang lebih besar dan tebal, serta alamat tempat sebagai sub-judul di bawahnya. Selain itu, ditambahkan juga sebuah garis tipis melintang (`Divider`) di tengah-tengah daftar yang berfungsi untuk memisahkan kelompok bioskop dengan kelompok restoran agar tampilannya lebih rapi dan terorganisir.
 
 ---
+
+### Stack
+---
+```
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: _buildStack(),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStack() {
+    return Stack(
+      alignment: const Alignment(0.6, 0.6),
+      children: [
+        const CircleAvatar(
+          backgroundImage: AssetImage('images/pic.jpg'),
+          radius: 100,
+        ),
+        Container(
+          decoration: const BoxDecoration(color: Colors.black45),
+          child: const Text(
+            'Dea',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+```
+![](images/stack.png)
+
+Menampilkan sebuah gambar profil berbentuk lingkaran besar di tengah layar, yang di atasnya ditumpuk dengan sebuah kotak hitam transparan berisi tulisan "Dea" berwarna putih dan tebal. Posisi tulisan tersebut diletakkan menumpuk sedikit ke arah kanan bawah dari gambar profil karena pengaturan tata letak (`alignment`) khusus pada komponen tumpukannya.
+
+---
