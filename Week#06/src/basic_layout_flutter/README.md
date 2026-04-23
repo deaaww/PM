@@ -159,3 +159,24 @@ Pada tampilan di atas, setiap gambar dibungkus dengan widget `Expanded` tanpa me
 Pada tampilan di atas, gambar tengah diberikan nilai **flex: 2**, sementara gambar lainnya tetap **flex: 1**. Hal ini menginstruksikan Flutter untuk memberikan ruang **dua kali lebih besar** kepada gambar kedua dibandingkan gambar kesatu dan ketiga. Total rasio lebar yang digunakan adalah 1:2:1, sehingga gambar tengah terlihat lebih dominan dan lebar di dalam baris tersebut.
 
 ---
+
+### Packing widgets
+---
+#### Row
+```
+        body: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.star, color: Colors.green[500]),
+            Icon(Icons.star, color: Colors.green[500]),
+            Icon(Icons.star, color: Colors.green[500]),
+            const Icon(Icons.star, color: Colors.black),
+            const Icon(Icons.star, color: Colors.black),
+          ],
+        ),
+```
+![](images/row_packing_widgets.png)
+
+Pada tampilan di atas, kelima ikon bintang berkumpul di pojok kiri atas dan tidak tersebar memenuhi lebar layar. Hal ini disebabkan oleh penggunaan properti `mainAxisSize: MainAxisSize.min` pada widget `Row`. Secara default, `Row` akan mencoba mengambil ruang horizontal sebesar mungkin (`max`). Namun, dengan mengatur nilainya ke `min`, `Row` dipaksa untuk menyusut dan hanya mengambil ruang selebar total akumulasi ikon bintang.
+
+---

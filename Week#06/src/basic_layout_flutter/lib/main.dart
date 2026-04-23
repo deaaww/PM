@@ -15,11 +15,13 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text(appTitle)),
         body: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Expanded(child: Image.asset('images/pic1.jpg')),
-            Expanded(flex: 2, child: Image.asset('images/pic2.jpg')),
-            Expanded(child: Image.asset('images/pic3.jpg')),
+            Icon(Icons.star, color: Colors.green[500]),
+            Icon(Icons.star, color: Colors.green[500]),
+            Icon(Icons.star, color: Colors.green[500]),
+            const Icon(Icons.star, color: Colors.black),
+            const Icon(Icons.star, color: Colors.black),
           ],
         ),
       ),
