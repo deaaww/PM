@@ -109,3 +109,19 @@ class MyApp extends StatelessWidget {
 Tampilan di atas mengalami **Right Overflow**, di mana hanya dua gambar yang muncul dengan sempurna, dan satu lainnya terpotong. Hal ini terjadi karena widget `Row` merender gambar sesuai resolusi aslinya tanpa pembatasan lebar.
 
 ---
+#### Column
+```
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Image.asset('images/pic1.jpg'),
+            Image.asset('images/pic2.jpg'),
+            Image.asset('images/pic3.jpg'),
+          ],
+        ),
+```
+![](images/column_aligning_widgets.png)
+
+Tampilan di atas mengalami **Bottom Overflow**, di mana hanya satu gambar yang muncul dengan sempurna, dengan satu gambar terpotong, dan satu gambar lainnya tidak muncul sama sekali. Hal ini terjadi karena widget `Column` merender gambar sesuai resolusi aslinya tanpa pembatasan tinggi.
+
+---
